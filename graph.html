@@ -1,0 +1,172 @@
+import React, { useEffect, useRef, useState } from 'react';
+import * as d3 from 'd3';
+
+const InteractiveGraph = () => {
+  const svgRef = useRef(null);
+  const [selectedNode, setSelectedNode] = useState(null);
+
+  useEffect(() => {
+    // Clear previous content
+    d3.select(svgRef.current).selectAll("*").remove();
+
+    const width = 1200;
+    const height = 700;
+
+    // Data structure
+    const nodes = [
+      { id: 'skar', label: 'skar', type: 'central' },
+      { id: 'robot', label: 'The Parable of The Robot Pirate', type: 'content' },
+      { id: 'intuition', label: 'The Dangerous Intuition Of David Bohm', type: 'content' },
+      { id: 'alien', label: 'On An Alien Planet', type: 'content' },
+      { id: 'charkhas', label: 'On Charkhas, AI & Economic Growth', type: 'content' },
+      { id: 'magic', label: 'This Magic Trick Has No Secrets', type: 'content' },
+      { id: 'causality', label: 'The Unsettling Physics of Causality', type: 'content' },
+      { id: 'questions', label: 'questions', type: 'content' },
+      { id: 'generality', label: 'Unbounded Generality', type: 'content' },
+      { id: 'compression', label: 'The Paninian Approach to Compression', type: 'content' }
+    ];
+
+    const links = nodes
+      .filter(n => n.id !== 'skar')
+      .map(n => ({ source: 'skar', target: n.id }));
+
+    // Create SVG
+    const svg = d3.select(svgRef.current)
+      .attr('width', width)
+      .attr('height', height)
+      .style('background', '#1a1a1a');
+
+    // Add zoom behavior
+    const g = svg.append('g');
+    
+    const zoom = d3.zoom()
+      .scaleExtent([0.5, 3])
+      .on('zoom', (event) => {
+        g.attr('transform', event.transform);
+      });
+
+    svg.call(zoom);
+
+    // Create force simulation
+    const simulation = d3.forceSimulation(nodes)
+      .force('link', d3.forceLink(links).id(d => d.id).distance(200))
+      .force('charge', d3.forceManyBody().strength(-500))
+      .force('center', d3.forceCenter(width / 2, height / 2))
+      .force('collision', d3.forceCollide().radius(80));
+
+    // Create links
+    const link = g.append('g')
+      .selectAll('line')
+      .data(links)
+      .join('line')
+      .attr('stroke', '#4a90e2')
+      .attr('stroke-width', 2)
+      .attr('stroke-opacity', 0.6);
+
+    // Create node groups
+    const node = g.append('g')
+      .selectAll('g')
+      .data(nodes)
+      .join('g')
+      .call(d3.drag()
+        .on('start', dragstarted)
+        .on('drag', dragged)
+        .on('end', dragended));
+
+    // Add circles to nodes
+    node.append('circle')
+      .attr('r', d => d.type === 'central' ? 20 : 12)
+      .attr('fill', d => d.type === 'central' ? '#ff6b6b' : '#4a90e2')
+      .attr('stroke', '#fff')
+      .attr('stroke-width', 2)
+      .style('cursor', 'pointer');
+
+    // Add labels
+    node.append('text')
+      .text(d => d.label)
+      .attr('x', 0)
+      .attr('y', d => d.type === 'central' ? 35 : 25)
+      .attr('text-anchor', 'middle')
+      .attr('fill', '#ffffff')
+      .attr('font-size', d => d.type === 'central' ? '18px' : '14px')
+      .attr('font-weight', d => d.type === 'central' ? 'bold' : 'normal')
+      .style('pointer-events', 'none')
+      .style('user-select', 'none');
+
+    // Add hover effects
+    node.on('mouseenter', function(event, d) {
+      d3.select(this).select('circle')
+        .transition()
+        .duration(200)
+        .attr('r', d.type === 'central' ? 24 : 16);
+      
+      setSelectedNode(d.label);
+    })
+    .on('mouseleave', function(event, d) {
+      d3.select(this).select('circle')
+        .transition()
+        .duration(200)
+        .attr('r', d.type === 'central' ? 20 : 12);
+    })
+    .on('click', function(event, d) {
+      console.log('Clicked:', d.label);
+    });
+
+    // Update positions on simulation tick
+    simulation.on('tick', () => {
+      link
+        .attr('x1', d => d.source.x)
+        .attr('y1', d => d.source.y)
+        .attr('x2', d => d.target.x)
+        .attr('y2', d => d.target.y);
+
+      node.attr('transform', d => `translate(${d.x},${d.y})`);
+    });
+
+    // Drag functions
+    function dragstarted(event, d) {
+      if (!event.active) simulation.alphaTarget(0.3).restart();
+      d.fx = d.x;
+      d.fy = d.y;
+    }
+
+    function dragged(event, d) {
+      d.fx = event.x;
+      d.fy = event.y;
+    }
+
+    function dragended(event, d) {
+      if (!event.active) simulation.alphaTarget(0);
+      d.fx = null;
+      d.fy = null;
+    }
+
+  }, []);
+
+  return (
+    <div className="w-full h-screen bg-gray-900 flex flex-col">
+      <div className="bg-blue-600 text-white px-6 py-4">
+        <h1 className="text-3xl font-bold">Interactive Graph</h1>
+        {selectedNode && (
+          <p className="text-sm mt-2 opacity-90">Hovering: {selectedNode}</p>
+        )}
+      </div>
+      
+      <div className="flex-1 overflow-hidden relative">
+        <svg ref={svgRef} className="w-full h-full"></svg>
+        
+        <div className="absolute bottom-4 right-4 bg-gray-800 text-white p-4 rounded-lg shadow-lg text-sm">
+          <h3 className="font-bold mb-2">Controls:</h3>
+          <ul className="space-y-1">
+            <li>🖱️ Drag nodes to reposition</li>
+            <li>🔍 Scroll to zoom in/out</li>
+            <li>👆 Click nodes for actions</li>
+            <li>🖐️ Pan by dragging background</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default InteractiveGraph;

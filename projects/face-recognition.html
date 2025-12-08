@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>skar</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="../index.html" class="logo">👾 skar</a>
+            <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                <span id="theme-icon">🌙</span>
+            </button>
+        </header>
+        <main>
+            <h1 class="project-title">Face Recognition Attendance System</h1>
+            <p>this is a technology-powered attendance system designed to solve a real problem. the usual attendance system in schools and colleges consumes a lot of time that could be spent on more productive activities. the idea is simple: a webcam captures all the students present and lets the system mark attendance automatically, no manual intervention needed.
+            </p>
+            <p>
+            this project uses python, opencv, the face_recognition library, and twilio for messaging. the system captures live video from a webcam and detects faces in real time. opencv draws bounding boxes around detected faces while the face_recognition library matches them against pre-encoded facial features stored in a pickle file. this encoding approach makes the matching process fast and efficient, even when processing multiple faces simultaneously.
+            the backend runs on django and connects to a mysql database that stores student names, registration numbers, attendance logs, and timestamps. this database structure makes it easy to pull up daily reports, track attendance patterns over time, and generate analytics for administrators or faculty.
+            </p>
+            <p>
+            one key feature is the automated notification system using the twilio api. whenever a student is marked absent, the system automatically sends a whatsapp message to designated contacts. this keeps students informed about their attendance status in real time, helping them plan how many classes they can afford to miss while still meeting the minimum attendance requirement. it's practical and solves the common problem of students not knowing their attendance until it's too late.
+            the whole system comes together as a complete automation solution that saves time for teachers, keeps students informed, and maintains accurate records without the hassle of traditional attendance methods.
+            </p>
+            <div class="project-links">
+                <a href="#" target="_blank">Demo</a>
+                <a href="https://www.linkedin.com/feed/update/urn:li:activity:7291169834036252672/?originTrackingId=RInOEOUKPjj5XoIuMYqYDw%3D%3D"
+                   target="_blank"
+                   class="linkedin-post-link">
+                    <img src="../images/face-recog.png"
+                         alt="LinkedIn post screenshot"
+                         style="width:100%; display:block; border-radius:12px; filter:brightness(0.98); transition:filter 0.2s;">
+                    <div style="position:absolute;top:12px;right:12px;background:var(--accent);color:#fff;padding:0.4em 0.8em;border-radius:8px;font-weight:600;box-shadow:0 1px 6px #0002;pointer-events:none;">
+                        View on LinkedIn
+                    </div>
+                </a>
+            </div>
+        </main>
+        <footer>
+            <div class="footer-links">
+                <a href="https://twitter.com/sibeshkar">Twitter</a>
+            </div>
+        </footer>
+    </div>
+    <script src="../script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>skar</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="../index.html" class="logo">👾 skar</a>
+            <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                <span id="theme-icon">🌙</span>
+            </button>
+        </header>
+        <main>
+            <h1 class="project-title">RF Emanation Detection</h1>
+            <div class="project-description" style="margin-top:0.6rem;">
+                <p>
+                    This project develops an advanced security system that detects anomalous activities in digital environments by analyzing unintended radio frequency (RF) emissions, called "emanations," from electronic devices. Electronic systems unintentionally emit RF signals during operation, which can compromise data security in corporate and military establishments. Traditional detection methods require profiling specific hardware models, making them impractical for deployment across diverse device ecosystems.
+                </p>
+
+                <p>
+                    My work extends novel research in hardware-agnostic emanation detection by replacing classical signal processing methods with deep learning techniques for improved pitch frequency estimation. Instead of profiling individual devices, the system scans for generic harmonic signatures symptomatic of emanations from clock signal leakages, a universal characteristic present in all electronic systems.
+                </p>
+
+                <p>
+                    The system processes IQ samples captured via Software-Defined Radio across 0.1–1.1 GHz, applying custom preprocessing to remove unintended modulation and hardware artifacts while preserving harmonic structure. After computing Welch-based Power Spectral Density estimates and detecting peaks through SNR thresholding, my deep learning model estimates fundamental frequencies from the detected harmonic patterns. This approach aims to improve upon the classical baseline which currently achieves detection down to -14 dB SNR.
+                </p>
+
+                <p>
+                    The project demonstrates practical applications including detecting damaged peripherals like keyboards and mice that create security vulnerabilities, identifying unauthorized data transfers to external storage devices, and monitoring baseline emanation patterns to flag anomalous activities. Real RF data was collected in a controlled shielded room environment using a Signal Hound SDR, with processing performed on high-dimensional data containing 2.5 million samples per capture at 25 MHz bandwidth.
+                </p>
+
+                <p>
+                    This is currently a work in progress, with the mathematical framework and preprocessing pipeline fully implemented and validated on real RF data. I'm actively training and optimizing deep learning models to enhance the pitch estimation component, with planned performance comparisons against classical methods and robustness testing in more complex RF environments.
+                </p>
+            </div>
+        </main>
+        <footer>
+            <div class="footer-links">
+                <a href="https://twitter.com/sibeshkar">Twitter</a>
+            </div>
+        </footer>
+    </div>
+    <script src="../script.js" defer></script>
+</body>
+</html>

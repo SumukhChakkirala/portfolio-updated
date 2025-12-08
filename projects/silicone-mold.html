@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>skar</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="../index.html" class="logo">👾 skar</a>
+            <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                <span id="theme-icon">🌙</span>
+            </button>
+        </header>
+        <main>
+            <h1 class="project-title">Silicone‑mold generation pipeline</h1>
+            <div class="project-description">
+                <p>
+                    Automated pipeline that converts a 3D part (STL) into two manufacturable silicone‑mold halves. It picks a practical draw direction, splits the part and hull, generates parting surfaces, assembles and repairs metamold geometry, and highlights regions that may require special tooling.
+                </p>
+                <ol class="project-steps">
+                    <li>Load mesh and compute convex hull and offset buffer.</li>
+                    <li>Choose optimal draw direction for extraction.</li>
+                    <li>Split hull and mesh, merge small regions for watertight halves.</li>
+                    <li>Build ruled parting surfaces and generate full metamold halves.</li>
+                    <li>Repair mesh defects and export STL files.</li>
+                    <li>Analyze extractability and flag regions needing special treatment.</li>
+                </ol>
+                <p style="color:var(--text-secondary);">Outputs: raw + repaired metamold STLs, repair logs, and an extractability report.</p>
+            </div>
+            <div class="project-gallery" aria-label="Pipeline images">
+                <a href="../images/lucy1.png" target="_blank" rel="noopener">
+                    <img src="../images/lucy1.png" alt="pipeline image 1">
+                    <span class="gallery-badge">View</span>
+                </a>
+                <a href="../images/lucy2.png" target="_blank" rel="noopener">
+                    <img src="../images/lucy2.png" alt="pipeline image 2">
+                    <span class="gallery-badge">View</span>
+                </a>
+                <a href="../images/lucy3.png" target="_blank" rel="noopener">
+                    <img src="../images/lucy3.png" alt="pipeline image 3">
+                    <span class="gallery-badge">View</span>
+                </a>
+                <a href="../images/lucy4.png" target="_blank" rel="noopener">
+                    <img src="../images/lucy4.png" alt="pipeline image 4">
+                    <span class="gallery-badge">View</span>
+                </a>
+                <a href="../images/lucy5.png" target="_blank" rel="noopener">
+                    <img src="../images/lucy5.png" alt="pipeline image 5">
+                    <span class="gallery-badge">View</span>
+                </a>
+                <a href="../images/lucy6.png" target="_blank" rel="noopener">
+                    <img src="../images/lucy6.png" alt="pipeline image 6">
+                    <span class="gallery-badge">View</span>
+                </a>
+                <a href="../images/lucy7.png" target="_blank" rel="noopener">
+                    <img src="../images/lucy7.png" alt="pipeline image 7">
+                    <span class="gallery-badge">View</span>
+                </a>
+            </div>
+            <div class="project-links">
+                <a href="https://github.com/pratikapte29/silicone_mold" target="_blank" rel="noopener">View on GitHub</a>
+            </div>
+        </main>
+        <footer>
+            <div class="footer-links">
+                <a href="https://www.linkedin.com/in/sumukh-chakkirala-021087241/" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://github.com/SumukhChakkirala/" target="_blank" rel="noopener">GitHub</a>
+            </div>
+        </footer>
+    </div>
+    <script src="../script.js" defer></script>
+</body>
+</html>

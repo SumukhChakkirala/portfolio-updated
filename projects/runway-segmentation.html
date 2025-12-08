@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>skar</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="../index.html" class="logo">👾 skar</a>
+            <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                <span id="theme-icon">🌙</span>
+            </button>
+        </header>
+        <main>
+                        <h1 class="project-title" style="text-align:center;">Runway Segmentation Model</h1>
+                        <div class="runway-description">
+                                <p>
+                                    A high-precision deep learning model for runway segmentation in aerial imagery, trained on synthetic and real-world datasets to detect and highlight runway surfaces with exceptional accuracy.
+                                </p>
+                        </div>
+                        <div class="runway-chart-section">
+                            <p style="text-align:center; color:var(--text-secondary); max-width:700px; margin:0 auto 2.5rem auto; font-size:1.05rem; line-height:1.6;">
+                                The model analyzes aerial imagery and accurately segments runway surfaces. Compare the original images with the model's segmentation output below:
+                            </p>
+                            <div class="runway-chart">
+                                <div class="runway-row runway-label-row">
+                                    <div class="runway-col"><span class="runway-label">Input Image</span></div>
+                                    <div class="runway-col"><span class="runway-label">Model Output</span></div>
+                                </div>
+                                <div class="runway-row">
+                                    <div class="runway-col"><img src="../images/1.png" alt="Input 1" class="runway-img"></div>
+                                    <div class="runway-col"><img src="../images/1a.png" alt="Output 1" class="runway-img"></div>
+                                </div>
+                                <div class="runway-row">
+                                    <div class="runway-col"><img src="../images/2.png" alt="Input 2" class="runway-img"></div>
+                                    <div class="runway-col"><img src="../images/2a.png" alt="Output 2" class="runway-img"></div>
+                                </div>
+                                <div class="runway-row">
+                                    <div class="runway-col"><img src="../images/3.png" alt="Input 3" class="runway-img"></div>
+                                    <div class="runway-col"><img src="../images/3a.png" alt="Output 3" class="runway-img"></div>
+                                </div>
+                                <div class="runway-row">
+                                    <div class="runway-col"><img src="../images/4.png" alt="Input 4" class="runway-img"></div>
+                                    <div class="runway-col"><img src="../images/4a.png" alt="Output 4" class="runway-img"></div>
+                                </div>
+                            </div>
+                            <p style="text-align:center; color:var(--text-secondary); font-size:1rem; margin-top:2rem; font-weight:500;">
+                                <strong style="color:var(--text-primary);">Left:</strong> Original aerial image &nbsp;&nbsp;|&nbsp;&nbsp; <strong style="color:var(--text-primary);">Right:</strong> Segmented runway output
+                            </p>
+                        </div>
+
+                        <div class="footer-links" style="margin-top:2rem;">
+                            <a href="https://huggingface.co/spaces/lazypanther/RunwAI" target="_blank" rel="noopener">Try on Hugging Face</a>
+                            <a href="https://github.com/SumukhChakkirala/ai-yo" target="_blank" rel="noopener">View Model Code</a>
+                        </div>
+        </main>
+        <footer>
+            <div class="footer-links">
+                <a href="https://www.linkedin.com/in/sumukh-chakkirala-021087241/" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://github.com/SumukhChakkirala/" target="_blank" rel="noopener">GitHub</a>
+            </div>
+        </footer>
+    </div>
+        <script src="../script.js" defer></script>
+
+</body>
+</html>
