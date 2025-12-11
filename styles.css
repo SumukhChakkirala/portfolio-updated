@@ -71,6 +71,21 @@
     box-shadow: 0 6px 24px rgba(0,0,0,0.2);
 }
 
+
+/* Intro tweaks */
+.intro p { margin: 0 0 0.9rem 0; max-width: 65ch; }
+
+/* Make the location line subtle and aligned with body copy */
+.intro-location {
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--text-secondary);
+}
+
+
+
+
+
 @media (max-width: 768px) {
     .runway-chart-section {
         padding: 2rem 1rem;
@@ -162,16 +177,33 @@
     box-sizing: border-box;
 }
 
-:root {
-    --bg-primary: #E07856;
-    --bg-secondary: #D86F4F;
-    --text-primary: #1A1614;
-    --text-secondary: #2D2220;
-    --accent: #0F0B0A;
-    --link-color: #1A1614;
-    --border: #C96A48;
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    text-decoration: none;
 }
 
+.logo-icon {
+    width: 22px;
+    height: 22px;
+    image-rendering: pixelated;
+    opacity: 0.8;
+    filter: brightness(0.9) contrast(1.1);
+}
+
+
+
+:root {
+    --bg-primary: #EBE7E0;      /* warm beige/cream background */
+    --bg-secondary: #D6D0C8;    /* slightly darker beige for cards/sections */
+    --text-primary: #191919;    /* deep black for main text */
+    --text-secondary: #4A4A4A;  /* medium gray for secondary text */
+    --accent: #CC6B4A;          /* Anthropic orange for accents */
+    --link-color: #CC6B4A;      /* orange for links */
+    --border: #D1CCC4;          /* subtle beige border */
+}
 [data-theme="dark"] {
     --bg-primary: #1A1614;
     --bg-secondary: #2A2220;
@@ -191,7 +223,7 @@ body {
 }
 
 .container {
-    max-width: 800px;
+    max-width: 700px;
     margin: 0 auto;
     padding: 2rem 1.5rem;
 }
@@ -735,4 +767,29 @@ footer {
     .container {
         padding: 1.5rem 1rem;
     }
+}
+
+/* Compact education list: show key courses in two columns on wider screens */
+.education {
+    max-width: 780px;
+    margin: 0.5rem auto 2rem auto;
+}
+.education .edu-list {
+    column-count: 2;
+    column-gap: 2rem;
+    list-style-position: inside;
+    padding-left: 0;
+    margin-top: 0.5rem;
+}
+.education .edu-list li { 
+    break-inside: avoid-column;
+    margin-bottom: 0.45rem;
+}
+@media (max-width: 900px) {
+    .education .edu-list { column-count: 1; }
+}
+
+/* Match key-course list color with the 'areas of interest' text color for visual consistency */
+.education .edu-list li {
+    color: var(--text-secondary);
 }

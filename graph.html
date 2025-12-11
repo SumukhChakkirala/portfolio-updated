@@ -14,7 +14,7 @@ const InteractiveGraph = () => {
 
     // Data structure
     const nodes = [
-      { id: 'skar', label: 'skar', type: 'central' },
+      { id: 'sumukh', label: 'sumukh', type: 'central' },
       { id: 'robot', label: 'The Parable of The Robot Pirate', type: 'content' },
       { id: 'intuition', label: 'The Dangerous Intuition Of David Bohm', type: 'content' },
       { id: 'alien', label: 'On An Alien Planet', type: 'content' },
@@ -27,8 +27,8 @@ const InteractiveGraph = () => {
     ];
 
     const links = nodes
-      .filter(n => n.id !== 'skar')
-      .map(n => ({ source: 'skar', target: n.id }));
+      .filter(n => n.id !== 'sumukh')
+      .map(n => ({ source: 'sumukh', target: n.id }));
 
     // Create SVG
     const svg = d3.select(svgRef.current)

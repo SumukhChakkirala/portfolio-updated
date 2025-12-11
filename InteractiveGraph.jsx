@@ -31,19 +31,6 @@ export default function InteractiveGraph() {
 
     const g = svg.append('g');
 
-    // Data
-    // const nodes = [
-    //   { id: 'skar', label: 'skar', type: 'central' },
-    //   { id: 'robot', label: 'The Parable of The Robot Pirate', type: 'content' },
-    //   { id: 'intuition', label: 'The Dangerous Intuition Of David Bohm', type: 'content' },
-    //   { id: 'alien', label: 'On An Alien Planet', type: 'content' },
-    //   { id: 'charkhas', label: 'On Charkhas, AI & Economic Growth', type: 'content' },
-    //   { id: 'magic', label: 'This Magic Trick Has No Secrets', type: 'content' },
-    //   { id: 'causality', label: 'The Unsettling Physics of Causality', type: 'content' },
-    //   { id: 'questions', label: 'questions', type: 'content' },
-    //   { id: 'generality', label: 'Unbounded Generality', type: 'content' },
-    //   { id: 'compression', label: 'The Pāṇinian Approach to Compression', type: 'content' }
-    // ];
 
     const links = nodes
       .filter(n => n.id !== 'sumukh')

@@ -18,7 +18,7 @@ export default function InteractiveGraph() {
     const g = svg.append('g')
 
     const nodes = [
-      { id: 'skar', label: 'skar', type: 'central' },
+      { id: 'sumukh', label: 'sumukh', type: 'central' },
       { id: 'robot', label: 'The Parable of The Robot Pirate', type: 'content' },
       { id: 'intuition', label: 'The Dangerous Intuition Of David Bohm', type: 'content' },
       { id: 'alien', label: 'On An Alien Planet', type: 'content' },
@@ -30,7 +30,7 @@ export default function InteractiveGraph() {
       { id: 'compression', label: 'The Pāṇinian Approach to Compression', type: 'content' }
     ]
 
-    const links = nodes.filter(n => n.id !== 'skar').map(n => ({ source: 'skar', target: n.id }))
+    const links = nodes.filter(n => n.id !== 'sumukh').map(n => ({ source: 'sumukh', target: n.id }))
 
     const zoom = d3.zoom().scaleExtent([0.5, 3]).on('zoom', (event) => g.attr('transform', event.transform))
     svg.call(zoom)

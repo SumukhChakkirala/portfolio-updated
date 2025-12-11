@@ -19,7 +19,7 @@ if (themeIcon) themeIcon.textContent = savedTheme === 'dark' ? '☀️' : '🌙'
 
 function getNodesFromLinks() {
     // Central node is always 'skar'
-    const nodes = [{ id: 'skar', label: 'sumukh', isCenter: true }];
+    const nodes = [{ id: 'sumukh', label: 'sumukh', isCenter: true }];
     // Get areas of interest from the <ol> in .interests
     const interestList = document.querySelector('.interests ol');
     if (!interestList) return nodes;
@@ -39,7 +39,7 @@ function getNodesFromLinks() {
 
 function getConnectionsFromNodes(nodes) {
     // Connect 'skar' to all other nodes
-    const centerId = 'skar';
+    const centerId = 'sumukh';
     return nodes.filter(n => n.id !== centerId).map(n => [centerId, n.id]);
 }
 
